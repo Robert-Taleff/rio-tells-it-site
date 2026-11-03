@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TikTok connected – Rio Tells It</title><meta name="robots" content="noindex"><link rel="stylesheet" href="style.css"></head>
+<body><main style="text-align:center">
+<h1>Almost done</h1>
+<p id="msg">Copy this code and paste it into the black <b>Connect TikTok</b> window on your laptop.</p>
+<p><input id="code" readonly style="width:100%;max-width:520px;padding:12px;font-size:16px;border-radius:8px;border:1px solid #444;background:#1c1c1c;color:#f2f2f2"></p>
+<p><button id="copy" style="padding:12px 24px;font-size:17px;border-radius:999px;border:0;background:#e2b13c;color:#121212;cursor:pointer">Copy code</button></p>
+<p class="muted">The code works once, for a few minutes.</p>
+<script>
+const q=new URLSearchParams(location.search);const c=q.get('code');const e=q.get('error_description')||q.get('error');
+const box=document.getElementById('code');
+if(c){box.value=c}else{document.getElementById('msg').textContent='TikTok did not send a code'+(e?(': '+e):'.')+' Close this tab and run Connect TikTok again.';box.style.display='none';document.getElementById('copy').style.display='none'}
+document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(box.value)}catch(_){box.select();document.execCommand('copy')}document.getElementById('copy').textContent='Copied!'};
+</script>
+</main></body></html>
